@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { IntroductionService } from './introduction.service';
 import { UserService } from '../user/user.service';
+import { resolveLanguage } from '../common/language.util';
 
 @Controller('introduction')
 export class IntroductionController {
@@ -27,7 +28,7 @@ export class IntroductionController {
     }
 
     const tokenLang = this.userService.getLanguage(token);
-    const lang = this.introService.getLanguage(tokenLang, acceptLanguage);
+    const lang = resolveLanguage(tokenLang, acceptLanguage);
 
     return this.introService.fetchIntroduction(articleName, lang);
   }

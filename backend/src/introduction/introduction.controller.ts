@@ -1,9 +1,10 @@
-import { BadRequestException, Controller, Get, Param, Headers } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Headers, Param } from '@nestjs/common';
+import axios from 'axios';
 
 @Controller('introduction')
 export class IntroductionController {
   @Get(':articleName')
-  getIntroduction(
+  async getIntroduction(
     @Param('articleName') articleName: string,
     @Headers('accept-language') acceptLanguage: string
   ) {
@@ -16,11 +17,14 @@ export class IntroductionController {
     const preferred = (acceptLanguage || '').split(',')[0].toLowerCase();
     const language = supportedLanguages.includes(preferred) ? preferred : 'en';
 
+    const url = `https://${language}.wikipedia.org/api/rest_v1/page/summary/${articleName}`;
+    const res = await axios.get(url);
+
     return {
       scrapeDate: Date.now(),
       articleName,
       language,
-      introduction: 'This is a placeholder.'
+      introduction: res.data.extract
     };
   }
 }

@@ -2,21 +2,10 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { CacheService } from 'src/cache/cache.service';
 
+let counter = 0;
 @Injectable()
 export class IntroductionService {
   constructor(private readonly cacheService: CacheService) {}
-
-  private supportedLanguages = ['en', 'fr', 'es'];
-
-  getLanguage(
-    tokenLang: string | undefined,
-    acceptLang: string | undefined,
-  ): string {
-    if (tokenLang && this.supportedLanguages.includes(tokenLang))
-      return tokenLang;
-    const preferred = (acceptLang || '').split(',')[0].toLowerCase();
-    return this.supportedLanguages.includes(preferred) ? preferred : 'en';
-  }
 
   async fetchIntroduction(articleName: string, language: string) {
     const cacheKey = `${language}:${articleName}`;
@@ -24,7 +13,7 @@ export class IntroductionService {
 
     const cached = this.cacheService.get(cacheKey);
     if (cached) {
-      return cached.data;
+      return cached;
     }
 
     const url = `https://${language}.wikipedia.org/api/rest_v1/page/summary/${articleName}`;
@@ -37,7 +26,7 @@ export class IntroductionService {
       introduction: res.data.extract,
     };
 
-    this.cacheService.set(cacheKey, { timestamp: now, data: response });
+    this.cacheService.set(cacheKey, response);
 
     return response;
   }

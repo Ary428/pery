@@ -5,8 +5,6 @@ export class IntroductionController {
   @Get(':articleName')
   getIntroduction(@Param('articleName') articleName: string) {
     const isValid = /^[\w\-]+$/.test(articleName);
-    console.log(isValid);
-
     if (!isValid) {
       throw new BadRequestException('Invalid article name');
     }

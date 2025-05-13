@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
+import { CacheService } from 'src/cache/cache.service';
 
 @Injectable()
 export class IntroductionService {
-  private readonly cache = new Map<string, { timestamp: number; data: any }>();
-  private readonly CACHE_TTL = 5 * 60 * 1000;
+  constructor(private readonly cacheService: CacheService) {}
 
   private supportedLanguages = ['en', 'fr', 'es'];
 
@@ -22,8 +22,8 @@ export class IntroductionService {
     const cacheKey = `${language}:${articleName}`;
     const now = Date.now();
 
-    const cached = this.cache.get(cacheKey);
-    if (cached && now - cached.timestamp < this.CACHE_TTL) {
+    const cached = this.cacheService.get(cacheKey);
+    if (cached) {
       return cached.data;
     }
 
@@ -37,7 +37,7 @@ export class IntroductionService {
       introduction: res.data.extract,
     };
 
-    this.cache.set(cacheKey, { timestamp: now, data: response });
+    this.cacheService.set(cacheKey, { timestamp: now, data: response });
 
     return response;
   }

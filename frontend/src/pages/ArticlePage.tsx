@@ -1,17 +1,23 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { PeryLayout } from "../layouts/PeryLayout";
 import PageTitle from "../components/PageTitle";
 import { PeryButton } from "../components/PeryButton";
 import articleImg from "../assets/article.png";
 import { useArticle } from "../context/ArticleContext";
+import { auth } from "../utils/auth";
+import { useEffect } from "react";
 export function ArticlePage() {
   const navigate = useNavigate();
   const { article } = useArticle();
-
-  if (!article) {
-    navigate("/");
-    return null;
-  }
+  useEffect(() => {
+    if (!article) {
+      auth.clear();
+      navigate("/");
+    }
+  }, [article, navigate]);
+  
+  if (!article) return null;
+  
 
   const { introduction } = article;
 

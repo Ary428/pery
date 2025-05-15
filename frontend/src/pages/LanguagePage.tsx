@@ -5,6 +5,7 @@ import { PeryButton } from "../components/PeryButton";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import PageTitle from "../components/PageTitle";
+import { auth } from "../utils/auth";
 
 export function LanguagePage() {
   const navigate = useNavigate();
@@ -26,8 +27,8 @@ export function LanguagePage() {
       });
 
       const data = await res.json();
-      localStorage.setItem("pery_token", data.token);
-      navigate("/topic"); // או לעמוד הבא
+      auth.setToken(data.token);
+      navigate("/topic");
     } catch (err) {
       alert("Failed to register");
     } finally {

@@ -6,7 +6,7 @@ import SubHeader from "../components/SubHeader";
 import { PeryLayout } from "../layouts/PeryLayout";
 import { PeryButton } from "../components/PeryButton";
 import { useArticle } from "../context/ArticleContext";
-
+import { auth } from "../utils/auth";
 export function TopicPage() {
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ export function TopicPage() {
 
   const handleContinue = async (e: React.FormEvent) => {
     e.preventDefault();
-    const token = localStorage.getItem("pery_token");
+    const token = auth.getToken();
     if (!token) {
       alert("No token found");
       return navigate("/");

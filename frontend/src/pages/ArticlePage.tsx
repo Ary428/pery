@@ -3,17 +3,17 @@ import { PeryLayout } from "../layouts/PeryLayout";
 import PageTitle from "../components/PageTitle";
 import { PeryButton } from "../components/PeryButton";
 import articleImg from "../assets/article.png";
+import { useArticle } from "../context/ArticleContext";
 export function ArticlePage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const data = location.state;
+  const { article } = useArticle();
 
-  if (!data) {
+  if (!article) {
     navigate("/");
     return null;
   }
 
-  const { introduction } = data;
+  const { introduction } = article;
 
   return (
     <PeryLayout leftTitle={<PageTitle firstLine="All set! read" secondLine="your article" />}>

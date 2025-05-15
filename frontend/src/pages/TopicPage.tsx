@@ -5,13 +5,15 @@ import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import { PeryLayout } from "../layouts/PeryLayout";
 import { PeryButton } from "../components/PeryButton";
+import { useArticle } from "../context/ArticleContext";
 
 export function TopicPage() {
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setArticle } = useArticle();
 
-  const handleContinue = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleContinue = async (e: React.FormEvent) => {
     e.preventDefault();
     const token = localStorage.getItem("pery_token");
     if (!token) {
@@ -38,7 +40,8 @@ export function TopicPage() {
       }
 
       const data = await res.json();
-      navigate("/article", { state: data });
+      setArticle(data);
+      navigate("/article");
     } catch (err) {
       alert("Something went wrong");
     } finally {
@@ -62,7 +65,7 @@ export function TopicPage() {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             required
-            className="border border-gray-300 rounded px-3 py-2 w-70 max-w-sm"
+            className="border border-gray-300 rounded px-3 py-2 w-full max-w-sm"
           />
         </div>
 

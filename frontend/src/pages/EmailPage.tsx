@@ -1,32 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PeryLayout } from "../layouts/PeryLayout";
 import { PeryButton } from "../components/PeryButton";
 import termsLockImg from "../assets/terms-lock.png";
 
 export function EmailPage() {
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleContinue = async (e: React.FormEvent) => {
+  const handleContinue = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    try {
-      const res = await fetch("http://localhost:3000/user", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userName: email, language: "en" }),
-      });
-
-      const data = await res.json();
-      console.log("Token:", data.token);
-
-      // TODO: move to next step
-    } catch (err) {
-      alert("Failed to register");
-    } finally {
-      setLoading(false);
-    }
+    navigate("/language", { state: { email } });
   };
 
   return (
@@ -56,15 +40,8 @@ export function EmailPage() {
           />
         </div>
 
-        <PeryButton type="submit" disabled={loading}>
-          {loading ? (
-            "Loading..."
-          ) : (
-            <>
-              Continue <span className="ml-1">›</span>
-            </>
-          )}
-        </PeryButton>
+        <PeryButton type="submit">Continue <span className="ml-1">›</span></PeryButton>
+
         <div className="bg-[#e3f0eb] p-4 rounded-lg flex items-center">
           <span className="text-[#484848] flex items-center">
             <img className="w-8 h-8 mr-2" src={termsLockImg} alt="Pery's terms" />

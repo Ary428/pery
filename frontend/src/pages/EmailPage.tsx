@@ -4,7 +4,6 @@ import { PeryLayout } from "../layouts/PeryLayout";
 import { PeryButton } from "../components/PeryButton";
 import termsLockImg from "../assets/terms-lock.png";
 import Header from "../components/Header";
-import SubHeader from "../components/SubHeader";
 import PageTitle from "../components/PageTitle";
 
 export function EmailPage() {

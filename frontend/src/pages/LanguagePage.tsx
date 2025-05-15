@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PeryLayout } from "../layouts/PeryLayout";
 import { PeryButton } from "../components/PeryButton";
+import Header from "../components/Header";
+import SubHeader from "../components/SubHeader";
 
 export function LanguagePage() {
   const navigate = useNavigate();
@@ -42,28 +44,61 @@ export function LanguagePage() {
       }
     >
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-800">Nice to meet you!</h2>
-          <p className="text-gray-600 text-sm">Which language do you prefer to read?</p>
+        <div className="mb-8">
+          <Header header="Nice to meet you!" />
+          <SubHeader subHeader="Which language do you prefer to read?" />
         </div>
 
-        <div className="space-y-2">
-          {["en", "fr", "es"].map((lang) => (
-            <label key={lang} className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="language"
-                value={lang}
-                checked={language === lang}
-                onChange={(e) => setLanguage(e.target.value)}
-              />
-              <span className="capitalize">{lang === "en" ? "English" : lang === "fr" ? "Français" : "Español"}</span>
+        <div className="space-y-4">
+          {[
+            { value: "en", label: "English" },
+            { value: "es", label: "Spanish" },
+            { value: "nl", label: "Dutch" },
+          ].map((lang) => (
+            <label key={lang.value} className="flex items-center gap-3">
+              <div className="relative flex items-center justify-center">
+                {language === lang.value ? (
+                  <div className="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                ) : (
+                  <div className="w-6 h-6 rounded-full border-2 border-gray-300"></div>
+                )}
+                <input
+                  type="radio"
+                  name="language"
+                  value={lang.value}
+                  checked={language === lang.value}
+                  onChange={() => setLanguage(lang.value)}
+                  className="sr-only" // Hide the actual radio button
+                />
+              </div>
+              <span className="text-xl text-gray-700">{lang.label}</span>
             </label>
           ))}
         </div>
 
         <PeryButton type="submit" disabled={loading}>
-          {loading ? "Loading..." : <>Continue <span className="ml-1">›</span></>}
+          {loading ? (
+            "Loading..."
+          ) : (
+            <>
+              Continue <span className="ml-1">›</span>
+            </>
+          )}
         </PeryButton>
       </form>
     </PeryLayout>

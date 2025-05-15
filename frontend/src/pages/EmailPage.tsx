@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { PeryLayout } from "../layouts/PeryLayout";
 import { PeryButton } from "../components/PeryButton";
 import termsLockImg from "../assets/terms-lock.png";
+import Header from "../components/Header";
+import SubHeader from "../components/SubHeader";
 
 export function EmailPage() {
   const [email, setEmail] = useState("");
@@ -24,8 +26,8 @@ export function EmailPage() {
     >
       <form onSubmit={handleContinue} className="space-y-6">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800">Love learning new stuff?</h2>
-          <p className="text-gray-600 text-sm">get an article on any subject you like!</p>
+          <Header header="Love learning new stuff?" />
+          <Header header="get an article on any subject you like!" />
         </div>
 
         <div className="space-y-2">

@@ -5,6 +5,7 @@ import { PeryButton } from "../components/PeryButton";
 import termsLockImg from "../assets/terms-lock.png";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
+import PageTitle from "../components/PageTitle";
 
 export function EmailPage() {
   const [email, setEmail] = useState("");
@@ -19,8 +20,7 @@ export function EmailPage() {
     <PeryLayout
       leftTitle={
         <>
-          <div className="text-5xl font-bold">Welcome</div>
-          <div className="text-5xl font-bold">to Pery!</div>
+          <PageTitle firstLine="Welcome" secondLine="to Pery!" />
         </>
       }
     >

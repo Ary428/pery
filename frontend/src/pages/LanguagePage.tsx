@@ -4,6 +4,7 @@ import { PeryLayout } from "../layouts/PeryLayout";
 import { PeryButton } from "../components/PeryButton";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
+import PageTitle from "../components/PageTitle";
 
 export function LanguagePage() {
   const navigate = useNavigate();
@@ -38,8 +39,7 @@ export function LanguagePage() {
     <PeryLayout
       leftTitle={
         <>
-          <div className="text-5xl font-bold">Welcome</div>
-          <div className="text-5xl font-bold">to Pery!</div>
+          <PageTitle firstLine="Welcome" secondLine="to Pery!" />
         </>
       }
     >

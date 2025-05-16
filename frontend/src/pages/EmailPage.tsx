@@ -30,17 +30,26 @@ export function EmailPage() {
           <Header header="get an article on any subject you like!" />
         </div>
 
-        <div className="space-y-2">
-          <Input label="Type your email address" placeholder="me@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required type="email" />
-        </div>
-
-        <Button type="submit">Continue <span className="ml-1">›</span></Button>
-
-        <div className="bg-[#e3f0eb] p-4 rounded-lg flex items-center w-full md:w-70">
-          <span className="text-[#484848] flex items-center">
-            <img className="w-8 h-8 mr-2" src={termsLockImg} alt="Pery's terms" />
-            By clicking "continue" I agree to Pery's terms
-          </span>
+        <div className="w-full md:w-80 space-y-4">
+          <div className="space-y-2">
+            <Input
+              label="Type your email address"
+              placeholder="me@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              type="email"
+            />
+          </div>
+          <Button type="submit">
+            Continue <span className="ml-1">›</span>
+          </Button>
+          <div className="bg-[#e3f0eb] py-4 px-2 rounded-lg flex items-center">
+            <span className="text-[#484848] text-xs flex items-center">
+              <img className="w-6 mr-1" src={termsLockImg} alt="Pery's terms" />
+              By clicking "continue" I agree to Pery's terms
+            </span>
+          </div>
         </div>
       </form>
     </PeryLayout>

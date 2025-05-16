@@ -10,7 +10,7 @@ export function Input({ label, placeholder, ...props }: InputProps) {
     <div className="space-y-2">
       {label && <label className="text-sm font-medium text-gray-700 block">{label}</label>}
       <input
-        className="border border-gray-300 rounded px-3 py-2 w-full md:w-70"
+        className="border border-gray-300 rounded px-3 py-2 w-full"
         placeholder={placeholder}
         {...props}
       />

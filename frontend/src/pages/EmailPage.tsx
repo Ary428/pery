@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PeryLayout } from "../layouts/PeryLayout";
 import { Button } from "../components/Button";
-import termsLockImg from "../assets/terms-lock.png";
 import Header from "../components/Header";
 import PageTitle from "../components/PageTitle";
 import { Input } from "../components/Input";

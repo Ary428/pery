@@ -19,8 +19,8 @@ export class IntroductionController {
   @Get(':articleName')
   async getIntroduction(
     @Param('articleName') articleName: string,
-    @Headers('accept-language') acceptLanguage: string,
-    @Headers('x-authentication') token: string,
+    @Headers('accept-language') acceptLanguage: string | undefined,
+    @Headers('x-authentication') token: string | undefined,
   ) {
     const isValid = /^[\w\-]+$/.test(articleName);
     if (!isValid) {

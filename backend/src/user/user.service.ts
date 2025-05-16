@@ -11,7 +11,7 @@ export class UserService {
     return { token };
   }
 
-  getLanguage(token: string): string | undefined {
-    return this.tokenToLanguage.get(token);
+  getLanguage(token?: string): string | undefined {
+    return token ? this.tokenToLanguage.get(token) : undefined;
   }
 }

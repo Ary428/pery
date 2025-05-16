@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import PageTitle from "../components/PageTitle";
 import { auth } from "../utils/auth";
+import { supportedLanguages } from "../constants/supportedLanguages";
 
 export function LanguagePage() {
   const navigate = useNavigate();
@@ -51,11 +52,7 @@ export function LanguagePage() {
         </div>
 
         <div className="space-y-4">
-          {[
-            { value: "en", label: "English" },
-            { value: "es", label: "Spanish" },
-            { value: "nl", label: "Dutch" },
-          ].map((lang) => (
+          {supportedLanguages.map((lang) => (
             <label key={lang.value} className="flex items-center gap-3">
               <div className="relative flex items-center justify-center">
                 {language === lang.value ? (

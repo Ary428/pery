@@ -28,9 +28,6 @@ export function ArticlePage() {
         <h2 className="text-lg font-semibold text-gray-800">All set. Here’s your article:</h2>
 
         <p className="whitespace-pre-line text-gray-500">{introduction}</p>
-        <p className="whitespace-pre-line text-gray-500">{introduction}</p>
-        <p className="whitespace-pre-line text-gray-500">{introduction}</p>
-        <p className="whitespace-pre-line text-gray-500">{introduction}</p>
 
         <Button onClick={() => navigate("/")}>Start over</Button>
       </div>

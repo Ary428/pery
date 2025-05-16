@@ -9,15 +9,20 @@ export function NotFoundPage() {
 
   return (
     <Layout pageTitle={<PageTitle firstLine="Oops!" secondLine="Page not found" />}>
-      <div className="md:space-y-6">
-        <div className="md:space-y-4">
-          <Button onClick={() => navigate("/")} className="w-full">
-            Go to homepage
-          </Button>
-        </div>
-        <img src={notFoundImg} alt="Page not found" className="w-full md:w-60 mx-auto md:mb-4" />
+      {/* תוכן למובייל - כפתור, ואז תמונה */}
+      <div className="md:hidden mb-20">
+        <Button onClick={() => navigate("/")} className="w-full">
+          Go to homepage
+        </Button>
+        
+        <img src={notFoundImg} alt="Page not found" className="w-full mx-auto" />
+      </div>
 
-        <div className="hidden md:block">
+      {/* תוכן למחשב - תמונה, טקסט, ואז כפתור */}
+      <div className="hidden md:block space-y-6 mb-20">
+        <img src={notFoundImg} alt="Page not found" className="w-60 mx-auto mb-4" />
+        
+        <div className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-800">Even Pery can't find this page...</h2>
 
           <p className="text-gray-500">
@@ -25,6 +30,10 @@ export function NotFoundPage() {
             in some remote corner of the internet, or it simply doesn't exist.
           </p>
         </div>
+        
+        <Button onClick={() => navigate("/")} className="w-full">
+          Go to homepage
+        </Button>
       </div>
     </Layout>
   );

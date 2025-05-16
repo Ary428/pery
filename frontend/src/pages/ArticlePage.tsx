@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { PeryLayout } from "../layouts/PeryLayout";
 import PageTitle from "../components/PageTitle";
-import { PeryButton } from "../components/Button";
+import { Button } from "../components/Button";
 import articleImg from "../assets/article.png";
 import { useArticle } from "../context/ArticleContext";
 import { auth } from "../utils/auth";
@@ -29,7 +29,7 @@ export function ArticlePage() {
 
         <p className="whitespace-pre-line text-gray-500">{introduction}</p>
 
-        <PeryButton onClick={() => navigate("/")}>Start over</PeryButton>
+        <Button onClick={() => navigate("/")}>Start over</Button>
       </div>
     </PeryLayout>
   );

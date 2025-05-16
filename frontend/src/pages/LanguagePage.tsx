@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PeryLayout } from "../layouts/PeryLayout";
-import { PeryButton } from "../components/Button";
+import { Button } from "../components/Button";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import PageTitle from "../components/PageTitle";
@@ -92,7 +92,7 @@ export function LanguagePage() {
           ))}
         </div>
 
-        <PeryButton type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading}>
           {loading ? (
             "Loading..."
           ) : (
@@ -100,7 +100,7 @@ export function LanguagePage() {
               Continue <span className="ml-1">›</span>
             </>
           )}
-        </PeryButton>
+        </Button>
       </form>
     </PeryLayout>
   );

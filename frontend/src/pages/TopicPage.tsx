@@ -4,9 +4,10 @@ import PageTitle from "../components/PageTitle";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import { PeryLayout } from "../layouts/PeryLayout";
-import { PeryButton } from "../components/Button";
+import { Button } from "../components/Button";
 import { useArticle } from "../context/ArticleContext";
 import { auth } from "../utils/auth";
+import { Input } from "../components/Input";
 export function TopicPage() {
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
@@ -58,18 +59,10 @@ export function TopicPage() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700 block">Article subject</label>
-          <input
-            type="text"
-            placeholder="subject"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-            required
-            className="border border-gray-300 rounded px-3 py-2 w-full max-w-sm"
-          />
+          <Input label="Article subject" placeholder="subject" value={topic} onChange={(e) => setTopic(e.target.value)} required />
         </div>
 
-        <PeryButton type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading}>
           {loading ? (
             "Loading..."
           ) : (
@@ -77,7 +70,7 @@ export function TopicPage() {
               Continue <span className="ml-1">›</span>
             </>
           )}
-        </PeryButton>
+        </Button>
       </form>
     </PeryLayout>
   );

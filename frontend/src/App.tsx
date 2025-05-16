@@ -3,6 +3,8 @@ import { EmailPage } from "./pages/EmailPage";
 import { LanguagePage } from "./pages/LanguagePage";
 import { TopicPage } from "./pages/TopicPage";
 import { ArticlePage } from "./pages/ArticlePage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+
 function App() {
   return (
     <Routes>
@@ -10,6 +12,7 @@ function App() {
       <Route path="/language" element={<LanguagePage />} />
       <Route path="/topic" element={<TopicPage />} />
       <Route path="/article" element={<ArticlePage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

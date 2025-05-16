@@ -6,6 +6,7 @@ import termsLockImg from "../assets/terms-lock.png";
 import Header from "../components/Header";
 import PageTitle from "../components/PageTitle";
 import { Input } from "../components/Input";
+import { TermsAgreement } from "../components/TermsAgreement";
 
 export function EmailPage() {
   const [email, setEmail] = useState("");
@@ -44,12 +45,7 @@ export function EmailPage() {
           <Button type="submit">
             Continue <span className="ml-1">›</span>
           </Button>
-          <div className="bg-[#e3f0eb] py-4 px-2 rounded-lg flex items-center">
-            <span className="text-[#484848] text-xs flex items-center">
-              <img className="w-6 mr-1" src={termsLockImg} alt="Pery's terms" />
-              By clicking "continue" I agree to Pery's terms
-            </span>
-          </div>
+          <TermsAgreement />
         </div>
       </form>
     </PeryLayout>

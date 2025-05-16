@@ -15,9 +15,8 @@ export function ArticlePage() {
       navigate("/");
     }
   }, [article, navigate]);
-  
+
   if (!article) return null;
-  
 
   const { introduction } = article;
 

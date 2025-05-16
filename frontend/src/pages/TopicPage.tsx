@@ -51,7 +51,7 @@ export function TopicPage() {
   };
 
   return (
-    <Layout leftTitle={<PageTitle firstLine="Welcome" secondLine="to Pery!" />}>
+    <Layout pageTitle={<PageTitle firstLine="Welcome" secondLine="to Pery!" />}>
       <form onSubmit={handleContinue} className="space-y-6">
         <div>
           <Header header="What would you like to read about?" />

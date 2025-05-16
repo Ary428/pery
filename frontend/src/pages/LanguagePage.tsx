@@ -38,7 +38,7 @@ export function LanguagePage() {
 
   return (
     <Layout
-      leftTitle={
+      pageTitle={
         <>
           <PageTitle firstLine="Welcome" secondLine="to Pery!" />
         </>

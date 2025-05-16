@@ -24,7 +24,7 @@ export function TopicPage() {
 
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/introduction/${topic}`, {
+      const res = await fetch(`https://pery-backend.onrender.com/introduction/${topic}`, {
         headers: {
           "x-authentication": token,
         },
@@ -57,20 +57,27 @@ export function TopicPage() {
           <Header header="What would you like to read about?" />
           <SubHeader subHeader="Dogs? Molecular culinary? everything goes..." />
         </div>
+        <div className="w-full md:w-80 space-y-4">
+          <div className="space-y-2">
+            <Input
+              label="Article subject"
+              placeholder="subject"
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="space-y-2">
-          <Input label="Article subject" placeholder="subject" value={topic} onChange={(e) => setTopic(e.target.value)} required />
+          <Button type="submit" disabled={loading}>
+            {loading ? (
+              "Loading..."
+            ) : (
+              <>
+                Continue <span className="ml-1">›</span>
+              </>
+            )}
+          </Button>
         </div>
-
-        <Button type="submit" disabled={loading}>
-          {loading ? (
-            "Loading..."
-          ) : (
-            <>
-              Continue <span className="ml-1">›</span>
-            </>
-          )}
-        </Button>
       </form>
     </Layout>
   );

@@ -20,7 +20,7 @@ export function LanguagePage() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/user", {
+      const res = await fetch("https://pery-backend.onrender.com/user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName: email, language }),

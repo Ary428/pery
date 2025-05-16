@@ -4,7 +4,7 @@ import PageTitle from "../components/PageTitle";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import { PeryLayout } from "../layouts/PeryLayout";
-import { PeryButton } from "../components/PeryButton";
+import { PeryButton } from "../components/Button";
 import { useArticle } from "../context/ArticleContext";
 import { auth } from "../utils/auth";
 export function TopicPage() {

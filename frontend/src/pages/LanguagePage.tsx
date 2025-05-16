@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PeryLayout } from "../layouts/PeryLayout";
-import { PeryButton } from "../components/PeryButton";
+import { PeryButton } from "../components/Button";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import PageTitle from "../components/PageTitle";

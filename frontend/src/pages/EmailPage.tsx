@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PeryLayout } from "../layouts/PeryLayout";
-import { PeryButton } from "../components/PeryButton";
+import { Button } from "../components/Button";
 import termsLockImg from "../assets/terms-lock.png";
 import Header from "../components/Header";
 import PageTitle from "../components/PageTitle";
@@ -41,7 +41,7 @@ export function EmailPage() {
           />
         </div>
 
-        <PeryButton type="submit">Continue <span className="ml-1">›</span></PeryButton>
+        <Button type="submit">Continue <span className="ml-1">›</span></Button>
 
         <div className="bg-[#e3f0eb] p-4 rounded-lg flex items-center">
           <span className="text-[#484848] flex items-center">

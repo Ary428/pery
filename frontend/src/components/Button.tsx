@@ -5,7 +5,7 @@ interface PeryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
 }
 
-export function PeryButton({ children, className, ...props }: PeryButtonProps) {
+export function Button({ children, className, ...props }: PeryButtonProps) {
     return (
         <>
             <button

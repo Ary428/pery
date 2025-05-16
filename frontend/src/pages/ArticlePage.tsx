@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { PeryLayout } from "../layouts/PeryLayout";
 import PageTitle from "../components/PageTitle";
-import { PeryButton } from "../components/PeryButton";
+import { PeryButton } from "../components/Button";
 import articleImg from "../assets/article.png";
 import { useArticle } from "../context/ArticleContext";
 import { auth } from "../utils/auth";

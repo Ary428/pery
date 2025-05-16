@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { PeryLayout } from "../layouts/PeryLayout";
+import { Layout } from "../layouts/Layout";
 import PageTitle from "../components/PageTitle";
 import { Button } from "../components/Button";
 import articleImg from "../assets/article.png";
@@ -21,7 +21,7 @@ export function ArticlePage() {
   const { introduction } = article;
 
   return (
-    <PeryLayout leftTitle={<PageTitle firstLine="All set! read" secondLine="your article" />}>
+    <Layout leftTitle={<PageTitle firstLine="All set! read" secondLine="your article" />}>
       <div className="space-y-6">
         <img src={articleImg} alt="Celebration" className="w-50 mb-2" />
 
@@ -31,6 +31,6 @@ export function ArticlePage() {
 
         <Button onClick={() => navigate("/")}>Start over</Button>
       </div>
-    </PeryLayout>
+    </Layout>
   );
 }

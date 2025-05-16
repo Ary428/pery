@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
-import { PeryLayout } from "../layouts/PeryLayout";
+import { Layout } from "../layouts/Layout";
 import { Button } from "../components/Button";
 import { useArticle } from "../context/ArticleContext";
 import { auth } from "../utils/auth";
@@ -51,7 +51,7 @@ export function TopicPage() {
   };
 
   return (
-    <PeryLayout leftTitle={<PageTitle firstLine="Welcome" secondLine="to Pery!" />}>
+    <Layout leftTitle={<PageTitle firstLine="Welcome" secondLine="to Pery!" />}>
       <form onSubmit={handleContinue} className="space-y-6">
         <div>
           <Header header="What would you like to read about?" />
@@ -72,6 +72,6 @@ export function TopicPage() {
           )}
         </Button>
       </form>
-    </PeryLayout>
+    </Layout>
   );
 }

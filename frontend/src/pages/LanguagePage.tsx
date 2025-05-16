@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { PeryLayout } from "../layouts/PeryLayout";
+import { Layout } from "../layouts/Layout";
 import { Button } from "../components/Button";
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
@@ -37,7 +37,7 @@ export function LanguagePage() {
   };
 
   return (
-    <PeryLayout
+    <Layout
       leftTitle={
         <>
           <PageTitle firstLine="Welcome" secondLine="to Pery!" />
@@ -102,6 +102,6 @@ export function LanguagePage() {
           )}
         </Button>
       </form>
-    </PeryLayout>
+    </Layout>
   );
 }

@@ -1,12 +1,12 @@
 import { type ReactNode } from "react";
 import helpAvatar from "../assets/help-avatar.png";
 
-interface PeryLayoutProps {
+interface LayoutProps {
   children: ReactNode;
   leftTitle: ReactNode;
 }
 
-export function PeryLayout({ children, leftTitle }: PeryLayoutProps) {
+export function Layout({ children, leftTitle }: LayoutProps) {
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* צד שמאל / למעלה */}

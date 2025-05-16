@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PeryLayout } from "../layouts/PeryLayout";
+import { Layout } from "../layouts/Layout"
 import { Button } from "../components/Button";
 import Header from "../components/Header";
 import PageTitle from "../components/PageTitle";
@@ -17,11 +17,9 @@ export function EmailPage() {
   };
 
   return (
-    <PeryLayout
+    <Layout
       leftTitle={
-        <>
           <PageTitle firstLine="Welcome" secondLine="to Pery!" />
-        </>
       }
     >
       <form onSubmit={handleContinue} className="space-y-6">
@@ -47,6 +45,6 @@ export function EmailPage() {
           <TermsAgreement />
         </div>
       </form>
-    </PeryLayout>
+    </Layout>
   );
 }

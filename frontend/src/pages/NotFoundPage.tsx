@@ -9,7 +9,6 @@ export function NotFoundPage() {
 
   return (
     <Layout pageTitle={<PageTitle firstLine="Oops!" secondLine="Page not found" />}>
-      {/* תוכן למובייל - כפתור, ואז תמונה */}
       <div className="md:hidden mb-20">
         <Button onClick={() => navigate("/")} className="w-full">
           Go to homepage
@@ -18,7 +17,6 @@ export function NotFoundPage() {
         <img src={notFoundImg} alt="Page not found" className="w-full mx-auto" />
       </div>
 
-      {/* תוכן למחשב - תמונה, טקסט, ואז כפתור */}
       <div className="hidden md:block space-y-6 mb-20">
         <img src={notFoundImg} alt="Page not found" className="w-60 mx-auto mb-4" />
         

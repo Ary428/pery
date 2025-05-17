@@ -1,125 +1,44 @@
-# 🧠 Pery Full-Stack Assignment – Backend
+# Backend – Wikipedia Introduction API (NestJS)
 
-This repository contains the **backend portion** of the Pery Full-Stack Assignment.  
-The backend is built with **NestJS** and provides a public REST API for fetching Wikipedia article introductions with support for user language preferences and caching.
-
----
-
-## 📦 Tech Stack
-
-- **Framework:** NestJS (Node.js, TypeScript)
-- **HTTP Client:** Axios
-- **In-Memory Cache:** Custom `CacheService`
-- **Architecture:** Modular, service-based, designed for future extensibility
+This folder contains the NestJS service that powers Pery’s public REST API for fetching the opening paragraph of any Wikipedia article, with language preference and 5‑minute caching.
 
 ---
 
-## 🎯 Features
+## Features
 
-### ✅ `GET /introduction/:articleName`
+| Endpoint                     | Description                                                                                                                                                                                                                                                                                                                      |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `POST /user`                 | Registers a user `{ userName, language }` and returns `{ token }`. The service stores token→language in memory.                                                                                                                                                                                                                  |
+| `GET /introduction/:article` | Returns `{ scrapeDate, articleName, language, introduction }`. Language resolution order: `x-authentication` token → `Accept-Language` header → default `en`. Only article names with letters, digits, hyphens or underscores are accepted (400 Bad Request otherwise). Results are cached per (article+language) for 5 minutes. |
 
-Fetches the first paragraph from a Wikipedia article.  
-Supports:
-- Language resolution via `x-authentication` token or `Accept-Language` header
-- Input validation (only letters, numbers, underscores, and hyphens)
-- In-memory caching (per article + language) for 5 minutes
-
-**Example response:**
-```json
-{
-  "scrapeDate": 1681837720000,
-  "articleName": "cat",
-  "language": "en",
-  "introduction": "The cat (Felis catus)..."
-}
-````
+Supported languages: **en · fr · es**  (easy to extend).
 
 ---
 
-### ✅ `POST /user`
-
-Registers a user and stores their preferred language in memory.
-
-**Input:**
-
-```json
-{
-  "userName": "arye",
-  "language": "fr"
-}
-```
-
-**Response:**
-
-```json
-{
-  "token": "uuid-token-here"
-}
-```
-
-Users can later send this token in the `x-authentication` header to personalize article language.
-
----
-
-## 🧠 Language Preference Logic
-
-Language is resolved in the following priority:
-
-1. `x-authentication` header → matches registered user's language
-2. `Accept-Language` header → supports `en`, `fr`, `es`
-3. Default: `"en"`
-
-All logic is encapsulated in a clean `resolveLanguage()` utility.
-
----
-
-## 🚀 How to Run Locally
-
-1. Install dependencies:
+## Local Development
 
 ```bash
-npm install
+cd backend
+npm install            # install dependencies
+npm run start:dev       # hot‑reload server on http://localhost:4000
 ```
 
-2. Start the server:
+No environment variables are required. Change the default port by setting `PORT` before running.
 
-```bash
-npm run start
-```
-
-3. Access API at:
+### Testing
 
 ```
-http://localhost:3000
-```
-
----
-
-## 📂 Project Structure
-
-```
-src/
-├── user/            # User registration logic (in-memory for now)
-├── introduction/    # Wikipedia fetching and controller logic
-├── cache/           # Custom in-memory cache service
-├── common/          # Utility functions (e.g., resolveLanguage)
+npm run test
 ```
 
 ---
 
-## 🔄 Caching
+## Deployment (Render)
 
-* Implemented via `CacheService`
-* Results are cached per article+language
-* TTL: 5 minutes
-* Can easily be replaced with Redis or other adapters in the future
+1. Create a new **Web Service** from this repo, root =`backend`.
+2. Build command: `npm run build`  ·  Start command: `npm run start:prod`.
+3. Add Health Check path `/health` (already implemented).
+4. On free tier the instance sleeps after \~15 min; use the warm‑up link above if needed.
 
 ---
 
-## 🧱 Future Ready
-
-The backend is designed to:
-
-* Plug in a real DB for user storage (via UserService abstraction)
-* Replace in-memory cache with Redis
-* Add new languages with minimal changes

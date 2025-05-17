@@ -8,6 +8,9 @@ import { Button } from "../components/Button";
 import { useArticle } from "../context/ArticleContext";
 import { auth } from "../utils/auth";
 import { Input } from "../components/Input";
+import Loader from "../components/Loader";
+import { API_BASE } from "../utils/apiBase";
+
 export function TopicPage() {
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +27,7 @@ export function TopicPage() {
 
     setLoading(true);
     try {
-      const res = await fetch(`https://pery-backend.onrender.com/introduction/${topic}`, {
+      const res = await fetch(`${API_BASE}/introduction/${topic}`, {
         headers: {
           "x-authentication": token,
         },
@@ -43,7 +46,7 @@ export function TopicPage() {
       const data = await res.json();
       setArticle(data);
       navigate("/article");
-    } catch (err) {
+    } catch {
       alert("Something went wrong");
     } finally {
       setLoading(false);
@@ -52,11 +55,14 @@ export function TopicPage() {
 
   return (
     <Layout pageTitle={<PageTitle firstLine="Welcome" secondLine="to Pery!" />}>
+      <Loader show={loading} />
+
       <form onSubmit={handleContinue} className="space-y-6">
         <div>
           <Header header="What would you like to read about?" />
           <SubHeader subHeader="Dogs? Molecular culinary? everything goes..." />
         </div>
+
         <div className="w-full md:w-80 space-y-4">
           <div className="space-y-2">
             <Input

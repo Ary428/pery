@@ -7,6 +7,8 @@ import SubHeader from "../components/SubHeader";
 import PageTitle from "../components/PageTitle";
 import { auth } from "../utils/auth";
 import { supportedLanguages } from "../constants/supportedLanguages";
+import Loader from "../components/Loader";
+import { API_BASE } from "../utils/apiBase";
 
 export function LanguagePage() {
   const navigate = useNavigate();
@@ -21,7 +23,7 @@ export function LanguagePage() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://pery-backend.onrender.com/user", {
+      const res = await fetch(`${API_BASE}/user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName: email, language }),
@@ -45,6 +47,7 @@ export function LanguagePage() {
         </>
       }
     >
+      <Loader show={loading} />
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="mb-8">
           <Header header="Nice to meet you!" />
